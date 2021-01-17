@@ -10,8 +10,9 @@
     <v-row class="text-center">
       <v-col>
         <v-text-field
-          color="pink accent-1"
+          color="Vo"
           outlined
+          dense
           label="Vo"
           v-model.number="parameters.Vo"
           type="number"
@@ -21,8 +22,9 @@
     <v-row class="text-center">
       <v-col>
         <v-text-field
-          color="blue accent-2"
+          color="Da"
           outlined
+          dense
           label="Da"
           v-model.number="parameters.Da"
           type="number"
@@ -32,8 +34,9 @@
     <v-row class="text-center">
       <v-col>
         <v-text-field
-          color="yellow darken-2"
+          color="Vi"
           outlined
+          dense
           label="Vi"
           v-model.number="parameters.Vi"
           type="number"
@@ -47,7 +50,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
-export default class CalcPlayerPower extends Vue {
+export default class IdolParameterBox extends Vue {
   @Prop()
   public parameters!: Record<string, number>;
 }

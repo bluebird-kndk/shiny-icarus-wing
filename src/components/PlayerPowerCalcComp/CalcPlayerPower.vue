@@ -1,15 +1,27 @@
 <template>
   <v-container>
-    <v-row class="text-center">
-      <h2>
-        打点計算
-      </h2>
-    </v-row>
     <v-row>
-      <v-col v-for="idol in supportIdols" :key="idol.name">
-        <v-sheet rounded :color="idol.color">
-          <SupportIdolBox :parameters="idol.parameters">{{ idol.name }}</SupportIdolBox>
-        </v-sheet>
+      <v-col>
+        <h3>
+          アイドルパラメータ
+        </h3>
+        <v-row>
+          <v-col>
+            <IdolParameterRow
+              v-bind:produceIdol.sync="produceIdol"
+              v-bind:supportIdols.sync="supportIdols"
+            />
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col>
+        <h3>
+          各種係数
+        </h3>
+        <AppealBuffSetting />
       </v-col>
     </v-row>
     <v-row>
@@ -22,60 +34,65 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import SupportIdolBox from './SupportIdolBox.vue';
+import IdolParameterBox from './IdolParameterBox.vue';
+import IdolParameterRow from './IdolParameterRow.vue';
+import AppealBuffSetting from './AppealBuffSetting.vue';
 
 @Component({
   components: {
-    SupportIdolBox,
+    IdolParameterBox,
+    IdolParameterRow,
+    AppealBuffSetting,
   },
 })
 export default class CalcPlayerPower extends Vue {
   private name = 'HelloWorld';
 
+  private produceIdol = {
+    name: 'Pアイドル',
+    color: 'red lighten-4',
+    parameters: {
+      Vo: 283,
+      Da: 283,
+      Vi: 283,
+    },
+  };
+
   private supportIdols = [
     {
       name: 'Sアイドル1',
-      color: 'red lighten-4',
+      color: 'yellow lighten-4',
       parameters: {
-        Vo: 1,
-        Da: 2,
-        Vi: 3,
+        Vo: 283,
+        Da: 283,
+        Vi: 283,
       },
     },
     {
       name: 'Sアイドル2',
-      color: 'yellow lighten-4',
+      color: 'green lighten-4',
       parameters: {
-        Vo: 4,
-        Da: 5,
-        Vi: 6,
+        Vo: 283,
+        Da: 283,
+        Vi: 283,
       },
     },
     {
       name: 'Sアイドル3',
-      color: 'green lighten-4',
+      color: 'blue lighten-4',
       parameters: {
-        Vo: 7,
-        Da: 8,
-        Vi: 9,
+        Vo: 283,
+        Da: 283,
+        Vi: 283,
       },
     },
     {
       name: 'Sアイドル4',
-      color: 'blue lighten-4',
-      parameters: {
-        Vo: 1,
-        Da: 2,
-        Vi: 3,
-      },
-    },
-    {
-      name: 'Sアイドル5',
       color: 'purple lighten-4',
       parameters: {
-        Vo: 1,
-        Da: 2,
-        Vi: 3,
+        Vo: 283,
+        Da: 283,
+        Vi: 283,
       },
     },
   ];
